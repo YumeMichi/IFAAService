@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" coreApp="true" package="org.ifaa.aidl.manager" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <application android:allowBackup="false" android:defaultToDeviceProtectedStorage="true" android:directBootAware="true" android:extractNativeLibs="false" android:label="@string/service_name" android:usesNonSdkApi="true">
+        <service android:enabled="true" android:exported="true" android:name=".IfaaManagerServiceImpl">
+            <intent-filter>
+                <action android:name="org.ifaa.aidl.manager.IfaaManagerService"/>
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
