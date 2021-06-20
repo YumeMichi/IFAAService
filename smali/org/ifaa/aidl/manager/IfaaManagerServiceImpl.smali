@@ -12,8 +12,6 @@
 
 
 # static fields
-.field private static final HAS_CUSTOM_FINGERPRINTER:Z
-
 .field private static mFpSensorLocationParam:Ljava/lang/String;
 
 
@@ -27,29 +25,7 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 3
-
-    const/4 v0, 0x1
-
-    new-array v0, v0, [I
-
-    const/4 v1, 0x0
-
-    const/16 v2, 0x3c
-
-    aput v2, v0, v1
-
-    .line 52
-    invoke-static {v0}, Landroid/util/OpFeatures;->isSupport([I)Z
-
-    move-result v0
-
-    sput-boolean v0, Lorg/ifaa/aidl/manager/IfaaManagerServiceImpl;->HAS_CUSTOM_FINGERPRINTER:Z
-
-    const-string v0, "{\'type\': 0, \'fullView\': {\'startX\': 452, \'startY\': 1970,\'width\': 174, \'height\': 174, \'navConflict\': true}}"
-
-    .line 58
-    sput-object v0, Lorg/ifaa/aidl/manager/IfaaManagerServiceImpl;->mFpSensorLocationParam:Ljava/lang/String;
+    .locals 0
 
     return-void
 .end method
@@ -819,14 +795,13 @@
 
     iget p1, p1, Landroid/util/DisplayMetrics;->widthPixels:I
 
-    .line 285
-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    const-string v5, "persist.sys.fod.pos.x"
 
-    move-result-object v0
+    invoke-static {v5}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
-    const v1, 0x5060189
+    move-result-object v5
 
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-static {v5}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result v0
 
@@ -834,14 +809,13 @@
 
     div-int/lit16 v0, v0, 0x438
 
-    .line 287
-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    const-string v5, "persist.sys.fod.pos.y"
 
-    move-result-object v1
+    invoke-static {v5}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
-    const v2, 0x506018a
+    move-result-object v5
 
-    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-static {v5}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result v1
 
@@ -849,14 +823,13 @@
 
     div-int/lit16 v1, v1, 0x438
 
-    .line 289
-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    const-string v5, "persist.sys.fod.size"
 
-    move-result-object v2
+    invoke-static {v5}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
-    const v3, 0x506018d
+    move-result-object v5
 
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-static {v5}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result v2
 
@@ -864,14 +837,13 @@
 
     div-int/lit16 v2, v2, 0x438
 
-    .line 291
-    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    const-string v5, "persist.sys.fod.size"
 
-    move-result-object p0
+    invoke-static {v5}, Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;
 
-    const v3, 0x5060186
+    move-result-object v5
 
-    invoke-virtual {p0, v3}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+    invoke-static {v5}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result p0
 
@@ -1058,41 +1030,11 @@
 .end method
 
 .method public getSupportBIOTypesImpl()I
-    .locals 2
+    .locals 1
 
-    .line 219
-    sget-boolean p0, Lorg/ifaa/aidl/manager/IfaaManagerServiceImpl;->HAS_CUSTOM_FINGERPRINTER:Z
+    const/4 v0, 0x1
 
-    if-eqz p0, :cond_0
-
-    const/16 p0, 0x11
-
-    goto :goto_0
-
-    :cond_0
-    const/4 p0, 0x1
-
-    .line 222
-    :goto_0
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v1, "bioType"
-
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v1, "IfaaManagerServiceImpl"
-
-    invoke-static {v1, v0}, Lorg/ifaa/aidl/manager/LogUtil;->i(Ljava/lang/String;Ljava/lang/String;)V
-
-    return p0
+    return v0
 .end method
 
 .method public getVersionImpl()I
